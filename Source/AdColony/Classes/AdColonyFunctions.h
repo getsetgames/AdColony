@@ -21,4 +21,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, meta = (Keywords = "adcolony ad advertising"), Category = "AdColony")
 	static void AdColonyPlayV4VCVideo(FString ZoneId, bool PrePopup, bool PostPopup);
+
+	UFUNCTION(BlueprintPure, meta = (Keywords = "adcolony ad advertising"), Category = "AdColony")
+	static bool AdColonyIsVirtualCurrencyRewardAvailable(FString ZoneId);
 };

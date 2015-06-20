@@ -60,6 +60,19 @@ void UAdColonyFunctions::AdColonyPlayV4VCVideo(FString ZoneId, bool PrePopup, bo
 #endif
 }
 
+bool UAdColonyFunctions::AdColonyIsVirtualCurrencyRewardAvailable(FString ZoneId)
+{
+#if PLATFORM_IOS
+	__block bool Result = false;
+	dispatch_sync(dispatch_get_main_queue(), ^{
+		Result = [AdColony isVirtualCurrencyRewardAvailableForZone:ZoneId.GetNSString()];
+	});
+	return Result;
+#endif
+	
+	return false;
+}
+
 #if PLATFORM_IOS
 @implementation ACDelegate
 - ( void ) onAdColonyAdAvailabilityChange:( BOOL )available inZone:( NSString * )zoneID
