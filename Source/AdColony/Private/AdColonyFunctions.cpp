@@ -31,12 +31,10 @@ void UAdColonyFunctions::AdColonyConfigure(FString AppId, TArray<FString> ZoneId
 #if PLATFORM_IOS
 	if (CustomUserId.IsEmpty() == false)
 	{
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			[AdColony setCustomID:CustomUserId.GetNSString()];
-		});
+		[AdColony setCustomID:CustomUserId.GetNSString()];
 	}
 	
-	dispatch_sync(dispatch_get_main_queue(), ^{
+	dispatch_async(dispatch_get_main_queue(), ^{
 		[AdColony configureWithAppID:AppId.GetNSString() zoneIDs:GetNSStringArray(ZoneIds) delegate:ACDelegateSingleton logging:Logging];
 	});
 #endif
@@ -63,11 +61,7 @@ void UAdColonyFunctions::AdColonyPlayV4VCVideo(FString ZoneId, bool PrePopup, bo
 bool UAdColonyFunctions::AdColonyIsVirtualCurrencyRewardAvailable(FString ZoneId)
 {
 #if PLATFORM_IOS
-	__block bool Result = false;
-	dispatch_sync(dispatch_get_main_queue(), ^{
-		Result = [AdColony isVirtualCurrencyRewardAvailableForZone:ZoneId.GetNSString()];
-	});
-	return Result;
+	return [AdColony isVirtualCurrencyRewardAvailableForZone:ZoneId.GetNSString()];
 #endif
 	
 	return false;
