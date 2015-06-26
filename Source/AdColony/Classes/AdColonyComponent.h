@@ -63,7 +63,7 @@ struct FAdColonyAdInfo
 	}
 };
 
-UCLASS(ClassGroup=AdColony, HideCategories=(Activation, "Components|Activation", Collision), meta=(BlueprintSpawnableComponent))
+UCLASS(ClassGroup=Advertising, HideCategories=(Activation, "Components|Activation", Collision), meta=(BlueprintSpawnableComponent))
 class UAdColonyComponent : public UActorComponent
 {
 	GENERATED_BODY()
