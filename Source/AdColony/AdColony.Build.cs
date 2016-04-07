@@ -9,11 +9,6 @@ namespace UnrealBuildTool.Rules
 {
 	public class AdColony : ModuleRules
 	{
-		private string ModulePath
-		{
-			get { return Path.GetDirectoryName( RulesCompiler.GetModuleFilename( this.GetType().Name ) ); }
-		}
-		
 		public AdColony(TargetInfo Target)
 		{
 			PublicIncludePaths.AddRange(
