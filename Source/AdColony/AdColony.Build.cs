@@ -9,7 +9,7 @@ namespace UnrealBuildTool.Rules
 {
 	public class AdColony : ModuleRules
 	{
-		public AdColony(TargetInfo Target)
+		public AdColony(ReadOnlyTargetRules Target) : base(Target)
 		{
 			PublicIncludePaths.AddRange(
 				new string[] {
